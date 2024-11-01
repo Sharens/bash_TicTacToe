@@ -1,7 +1,5 @@
-# main.sh
 #!/bin/bash
 
-# Dodać opcję wyboru czym chce gracz grać
 player_1="X"
 player_2="O"
 
@@ -42,13 +40,21 @@ starting_player() {
 
 select_field () {
     echo -e "\n"
-    echo "Wybierz pole od 1 - 9: " # Dodać sprawdzanie czy gracz wybrał poprawne pole
+    echo "Wybierz pole od 1 - 9: "
+
     while true; do
         read input_field
-        if [ "${field[$input_field-1]}" == "X" ] || [ "${field[$input_field-1]}" == "O" ]; then
+
+        if [[ ! $input_field =~ [1-9]$ ]]; then
+            print_board
+            echo -e "\n"
+            echo "Wybrano niepoprawny znak, wybierz cyfrę 1-9"
+
+        elif [ "${field[$input_field-1]}" == "X" ] || [ "${field[$input_field-1]}" == "O" ]; then
             print_board
             echo -e "\n"
             echo "Wybrano zajęte pole, wybierz inne"
+
         else
             break
         fi
