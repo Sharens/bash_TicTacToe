@@ -1,10 +1,10 @@
 # Kółko i krzyżyk w bashu
 
 ## Backlog:
-[x] - działa w trybie gry turowej,
-[ ] - pozwala na zapis i odtwarzanie przerwanej gry (save game),
-[ ] - pozwala na grę z komputerem.
-[ ] - dodać kontrolę nad inputem użytkownika.
+- [x] - działa w trybie gry turowej,
+- [ ] - dodać kontrolę nad inputem użytkownika.
+- [ ] - pozwala na zapis i odtwarzanie przerwanej gry (save game),
+- [ ] - pozwala na grę z komputerem.
 
 Ten projekt to implementacja gry w kółko i krzyżyk (Tic-Tac-Toe) w skrypcie bash. Gra pozwala dwóm graczom na rywalizację na planszy o wymiarach 3x3, gdzie gracze na zmianę wybierają pola i dążą do uzyskania trzech swoich symboli w linii.
 
