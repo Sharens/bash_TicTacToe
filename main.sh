@@ -43,8 +43,17 @@ starting_player() {
 select_field () {
     echo -e "\n"
     echo "Wybierz pole od 1 - 9: " # Dodać sprawdzanie czy gracz wybrał poprawne pole
-    read input_field
-    select_field=${field[($input_field-1)]}
+    while true; do
+        read input_field
+        if [ "${field[$input_field-1]}" == "X" ] || [ "${field[$input_field-1]}" == "O" ]; then
+            print_board
+            echo -e "\n"
+            echo "Wybrano zajęte pole, wybierz inne"
+        else
+            break
+        fi
+    done
+
     ((turn+=1))
 
     field[$input_field-1]=$current_player
