@@ -23,7 +23,7 @@ Ten projekt to implementacja gry w kółko i krzyżyk (Tic-Tac-Toe) w skrypcie b
 2. Uruchom grę poleceniem:
 
     ```bash
-    ./main.sh
+    bash main.sh
     ```
 
 ## Zasady gry
