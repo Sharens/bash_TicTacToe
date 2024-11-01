@@ -2,7 +2,7 @@
 
 ## Backlog:
 - [x] - działa w trybie gry turowej,
-- [ ] - dodać kontrolę nad inputem użytkownika.
+- [x] - dodać kontrolę nad inputem użytkownika.
 - [ ] - pozwala na zapis i odtwarzanie przerwanej gry (save game),
 - [ ] - pozwala na grę z komputerem.
 
