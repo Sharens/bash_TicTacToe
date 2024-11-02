@@ -40,12 +40,16 @@ starting_player() {
 
 select_field () {
     echo -e "\n"
-    echo "Wybierz pole od 1 - 9: "
+    echo "Wybierz pole od 1 - 9 lub naciśnij "S" celu zapisania gry: "
 
     while true; do
         read input_field
 
-        if [[ ! $input_field =~ [1-9]$ ]]; then
+        if [[ "$input_field" == "S" || "$input_field" == "s" ]]; then
+            save_game
+            echo "Gra została zapisana, Wybierz pole od 1 - 9: "
+            continue
+        elif [[ ! $input_field =~ [1-9]$ ]]; then
             print_board
             echo -e "\n"
             echo "Wybrano niepoprawny znak, wybierz cyfrę 1-9"
@@ -122,8 +126,48 @@ choose_winner () {
     check_win 2 4 6
 }
 
+save_game () {
+    echo "### Zapisywanie gry ###"
+
+    echo "${field[@]}" > game_save.txt
+    echo "$current_player" >> game_save.txt
+    echo "$turn" >> game_save.txt
+
+    echo "### Gra została zapisana w game_save.txt ###"
+}
+
+load_game() {
+    if [ ! -f game_save.txt]; then
+        echo -e "\n"
+        echo "Brak zapisanego stanu gry."
+        return
+    fi
+
+    echo -e "\n"
+    echo "Wczytuje grę..."
+
+    read -a field < game_save.txt
+    read current_player < <(sed -n '2p' game_save.txt)
+    read turn < <(sed -n '3p' game_save.txt)
+
+    echo -e "\n"
+    echo "### Gra została wczytana ###"
+    print_board
+}
+
+ask_load_game() {
+    echo "Czy chcesz wczytać grę? (Wpisz 'Y' jeżeli tak)"
+    read answer
+
+    if [[ "$answer" == 'Y'|| "$answer" == 'y' ]]; then
+        load_game
+    else
+        starting_player
+    fi
+}
+
 welcome_screen
-starting_player
+ask_load_game
 print_board
 select_field
 print_board
